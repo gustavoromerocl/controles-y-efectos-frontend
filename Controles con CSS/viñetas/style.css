@@ -1,0 +1,17 @@
+/*https://astronautweb.co/snippet/font-awesome/*/
+
+.custom-list li{
+  padding-left: 2rem;
+  list-style-type: none;
+  position: relative;
+}
+
+.custom-list li::before{
+  position: absolute;
+  font-family: FontAwesome;
+  font-size: .6rem;
+  content: "\f00c";
+  color: green;
+  left: .01rem;
+  top: 0.25rem;
+}

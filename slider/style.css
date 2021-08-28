@@ -6,6 +6,9 @@
 
 .slider .container{
   white-space: nowrap;
+  position: relative;
+  transition:  all 0.3s;
+  left: 0;
 }
 
 .slider .container *{

@@ -1,0 +1,28 @@
+html, body{
+  margin: 0px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.hero-image{
+  height: 75vh;
+  background:url('home-img.png'),green;
+  background-size: cover;
+  background-position: center;
+  padding: 2em;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero-image h1{
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 0px;
+  text-shadow: 0px 0px 4px #000;
+}
+
+.hero-image p{
+  font-size: 1.2rem;
+}

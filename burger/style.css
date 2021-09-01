@@ -3,6 +3,9 @@ html, body{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.overflow-control{
+  overflow-x: hidden;
+}
 .main-container{
   white-space: nowrap;
   position: relative;

@@ -1,5 +1,7 @@
 
-/**nav icon */
+/**nav icon 
+https://github.com/RandyMejiaArias/Transform-NavIcons
+*/
 
 class IndexForSiblings{
   static get(el){
@@ -40,4 +42,8 @@ class Toggler{
 
 (function(){
   new Toggler(".content");
+
+  document.querySelector(".toggle-menu").addEventListener("click", function(){
+    document.querySelector(".main-container").classList.toggle("openMenu"); //alterna entre add y remove
+  })
 })();

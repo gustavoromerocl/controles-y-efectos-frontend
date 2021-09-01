@@ -7,10 +7,12 @@ html, body{
   white-space: nowrap;
   position: relative;
   left: -300px;
-  transition: left .2s;
+  transition: left .6s cubic-bezier(0.075, 0.02, 0.165, 1); /*despliegue final mas lento*/
 }
 
-
+.main-container.openMenu{ /*cuando el punto esta pegado quiere decir que cuando posea esa clase se aplica*/
+  left: 0px;
+}
 
 .main-container *{
   white-space: normal;

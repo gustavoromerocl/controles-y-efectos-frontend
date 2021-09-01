@@ -1,0 +1,95 @@
+/*Change to watch in slow motion */
+:root{
+  --duration: 0.5s;
+  --size: 100%;
+}
+
+.navicon-button {
+  display: inline-block;
+  position: relative;
+  padding: 2.0625rem 1.5rem;
+  transition: 0.25s;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.8;
+}
+
+.navicon-button .navicon::before, .navicon-button .navicon::after{
+  transition: 0.25s;
+} 
+
+.navicon-button:hover{
+  transition: 0.5s;
+  opacity: 1;
+}
+
+.navicon-button:hover .navicon::before, .navicon-button:hover .navicon::after{
+  transition: 0.25s;
+}
+
+.navicon-button:hover .navicon::before{
+  top: 0.825rem;
+}
+
+.navicon-button:hover .navicon::after{
+  top: -0.825rem;
+}
+
+.navicon{
+  position: relative;
+  width: 2.5em;
+  height: .3125rem;
+  background: white;
+  transition: 0.5s;
+  border-radius: 2.5rem;
+}
+
+.navicon::before, .navicon::after{
+  display: block;
+		content: "";
+		height: 0.3125rem;
+		width: 2.5rem;
+    background: white;
+		position: absolute;
+		z-index: -1;
+		transition: 0.5s 0.25s;
+		border-radius: 1rem;
+}
+
+.navicon::before{
+  top: 0.625rem;
+}
+
+.navicon::after{
+  top: -0.625rem;
+}
+
+.open:not(.steps) .navicon:before, .open:not(.steps) .navicon:after{
+	top: 0 !important;
+}
+
+.open .navicon:before, .open .navicon:after {
+	transition: 0.5s;
+}
+
+/* Minus */
+.open {
+	transform: scale(0.75);
+}
+
+/* × and + */
+.open.plus .navicon, .open.x .navicon{
+  background: transparent;
+}
+
+.open.plus .navicon::before, .open.x .navicon::before{
+  transform: rotate(-45deg);
+}
+
+.open.plus .navicon::after, .open.x .navicon::after{
+  transform: rotate(45deg);
+}
+
+.open.plus {
+	transform: scale(0.75) rotate(45deg);
+}

@@ -3,6 +3,37 @@ html, body{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.main-container{
+  white-space: nowrap;
+  position: relative;
+  left: -300px;
+  transition: left .2s;
+}
+
+.main-container:hover{
+  left: 0px;
+}
+
+.main-container *{
+  white-space: normal;
+}
+
+.main-container .lateral-menu{
+  width: 300px;
+}
+
+.main-container .content, .main-container .lateral-menu{
+  display: inline-block;
+  margin-right: -4px;
+  vertical-align: top;
+  height: 100vh;
+}
+
+.main-container .content{
+  overflow-y: scroll;
+  width: 100%;
+}
+
 .hero-image{
   height: 75vh;
   background:url('home-img.png'),green;

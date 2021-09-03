@@ -1,3 +1,13 @@
+.indicator{
+  position: absolute;
+  bottom: -5px;
+  left: 0px;
+  height: 5px;
+  width: 0px;
+  background-color: rgb(50, 50, 50);
+  transition: all 0.2s;
+}
+
 .tabs{
   overflow: hidden;
   position: relative;
@@ -7,6 +17,7 @@
   white-space: nowrap;
   position: relative;
   left: 0px;
+  transition: all .4s cubic-bezier(0.075, 0.02, 0.165, 1); 
 }
 
 .tabs .container *{ /*Hace que los hijos del elemento se muestren en el espacio de forma correcta*/

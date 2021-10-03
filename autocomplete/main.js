@@ -1,8 +1,22 @@
 class Autocomplete{
   constructor(input_selector, base_url){
+    this.search = this.search.bind(this)
     this.input = document.querySelector(input_selector)
     this.url = base_url;
+    this.value = "";
+    this.interval == null;
     this.buildDataList();
+    this.bindEvents();
+  }
+
+  bindEvents(){
+    this.input.addEventListener("keyup",() => {
+      if (this.input.value == this.value || this.input.value.length < 3) return;
+      if (this.interval) window.clearInterval(this.interval);
+      this.value = this.input.value;
+      this.interval = window.setTimeout(this.search,500);
+
+    })
   }
 
   buildDataList(){
@@ -24,7 +38,7 @@ class Autocomplete{
   }
 
   search(){
-    Search.get(this.url +"harry")
+    Search.get(this.url + this.value)
     .then(results => this.build(results));
   }
 }
@@ -56,5 +70,5 @@ class Search{
 (function(){
   const googleBooksApiUrl = "https://www.googleapis.com/books/v1/volumes?q=";
   let autocomplete = new Autocomplete("#searcher", googleBooksApiUrl);
-  autocomplete.search();
+
 })();

@@ -36,11 +36,14 @@ class DragList{
   constructor(list_selector, items_selector="li"){
     this.list = document.querySelector(list_selector);
     this.items = this.list.querySelectorAll(items_selector);
+    this.finalPosition = -1;
+    this.finalElementHover = null;
+    this.canvas = document.createElement("canvas");
+
     this.handleDragStart = this.handleDragStart.bind(this);
     this.handleDrag = this.handleDrag.bind(this);
     this.handleDragEnd = this.handleDragEnd.bind(this);
 
-    this.canvas = document.createElement("canvas");
     this.buildFakeElement();
     this.bindEvents();
   }
@@ -82,15 +85,25 @@ class DragList{
     if (item == ev.currentTarget) return;
     let result = DOMHelper.whereIs(item, mouseCoords)
     if(result == -1) return;
+
+    this.finalPosition = result;
+    this.finalElementHover = item;
+
     if(result == 1) this.list.insertBefore(this.fakeElement, item.nextSibling)
-    if(result == 1) this.list.insertBefore(this.fakeElement, item)
+    if(result == 2) this.list.insertBefore(this.fakeElement, item)
+
+
   }
 
   handleDragEnd(ev){
     let el = ev.currentTarget; //elemento actual
+    el.classList.remove("dragging");
     el.style.top = ""; //Reinicia corrdenadas para evitar bug de arrastre
     el.style.left = "";
-    el.classList.remove("dragging");
+    
+
+    if(this.finalPosition == 1) this.list.insertBefore(el, this.finalElementHover.nextSibling);
+    if(this.finalPosition == 2) this.list.insertBefore(el, this.finalElementHover);
   };
 
 }

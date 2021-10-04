@@ -1,0 +1,28 @@
+body{
+  text-align: center;
+
+}
+
+li{
+  list-style-type: none;
+  vertical-align: bottom;
+}
+
+ul{
+  display: inline-block;
+}
+
+.card{
+  background: white;
+  margin-top: 10px;
+  padding: 7px;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  width: 400px;
+  height: 100px;
+  transition: all 0.4s;
+}
+
+.dragging{
+  position: fixed;
+}

@@ -4,6 +4,17 @@ class DOMHelper{
     el.style.left = (coords.x - (el.clientWidth / 2)) + "px";
   }
   
+  static isOver(el, pointerCoords){
+    let elCoords = el.getBoundingClientRect();
+
+    if(pointerCoords.x > elCoords.left && pointerCoords.x < (elCoords.left + elCoords.width)){
+      if(pointerCoords.y > elCoords.top && pointerCoords.y < (elCoords.top + elCoords.height)){
+        return el.style.background = "red";
+      }
+    }
+
+    el.style.background = "white";
+  }
 }
 
 class DragList{
@@ -15,8 +26,14 @@ class DragList{
     this.handleDragEnd = this.handleDragEnd.bind(this);
 
     this.canvas = document.createElement("canvas");
-
+    this.buildFakeElement();
     this.bindEvents();
+  }
+
+  buildFakeElement(){
+    this.fakeElement = document.createElement("div");
+    this.fakeElement.style.background = "#eee";
+    this.fakeElement.classList.add("card");
   }
 
   bindEvents(){
@@ -35,7 +52,11 @@ class DragList{
   };
 
   handleDrag(ev){
-    DOMHelper.move(ev.currentTarget, {x: ev.clientX, y: ev.clientY})
+    let mouseCoords = {x: ev.clientX, y: ev.clientY}
+    DOMHelper.move(ev.currentTarget, mouseCoords);
+    this.items.forEach(item => {
+      if (item == ev.currentTarget) return;
+      DOMHelper.isOver(item, mouseCoords)})
   };
 
   handleDragEnd(ev){

@@ -1,0 +1,44 @@
+nav{
+  text-align: center;
+}
+
+button{
+  border: none;
+  background-color: #eee;
+  color: #222;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  padding: 10px;
+  border-radius: 2px;
+  font-size: 1.5rem;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.card{
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  width: 300px;
+  height: 350px;
+  color: white;
+  background: #222;
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.card img{
+  max-width: 80%;
+  max-height: 70%;
+}
+
+button.mixitup-control-active{
+  background-color: violet;
+  box-shadow: 0 7px 12px rgba(0,0,0,0.45);
+}
+
+
+
+

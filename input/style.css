@@ -1,0 +1,65 @@
+.input-form{
+  position: relative;
+  padding-top: 12px;
+}
+
+.input-form input{
+  width: 100%;
+  border: none;
+  padding: 8px 0px;
+  border-bottom: solid 1px #bdbdbd;
+}
+
+.input-form input:focus{
+  outline: none;
+}
+
+.input-form input:focus + label /* + señala a label como hermano (mismo padre) o elementos juntos en el dom*/, .input-form input.non-empty + label /*Se aplican lso estilos en caso de que tengo la clase nonempty (main.js)*/{ 
+  font-size: 0.6rem;
+  margin-top: -12px;
+}
+
+.input-form input:focus + label::after, .input-form input.non-empty + label::after{
+  visibility: visible;
+  transform: scale(1);
+}
+.input-form label{
+  position: absolute;
+  top: 14px;
+  left: 0px;
+  pointer-events: none; /*desactiva el hover del cursor*/
+  width: 100%;
+  transition: all .2s;
+}
+
+.input-form input:valid + label{
+  color: #1565c0
+}
+
+.input-form input:invalid + label{
+  color: #d32f2f
+}
+
+.container-input{
+  width: 300px;
+}
+
+.input-form input:not(:focus):not(.non-empty) + label{
+  color: #bdbdbd;
+}
+
+
+
+.input-form label::after{
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0%;
+  height: 1px;
+  background-color: currentColor;
+  visibility: hidden;
+  transform: scale(0);
+  bottom: -30px;
+  transition: transform 0.15s;
+  transition-delay: 0.15s;
+}

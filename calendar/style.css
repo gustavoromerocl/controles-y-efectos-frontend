@@ -31,3 +31,18 @@
 .custom-calendar tr td{
   border: solid 1px #f5f5f5
 }
+
+.custom-calendar button{
+  display: inline-block;
+  width: 50%;
+  border: none;
+  outline: none;
+  background-color: #ef3f61;
+  color: white;
+  cursor: pointer;
+}
+
+.custom-calendar button:hover{
+  background-color:  #db3b61;
+}
+

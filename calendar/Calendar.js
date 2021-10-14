@@ -11,8 +11,8 @@ class Calendar{
     this.calendarTable = null;
 
     this.buildTable();
-
     this.updateTable();
+    this.bindEvents();
   }
 
   updateTable(){
@@ -35,6 +35,7 @@ class Calendar{
           td.style.borderStyle = 'solid';
         }else{
           td.style.borderStyle = 'none';
+          td.innerHTML = '';
         }
 
         
@@ -47,12 +48,54 @@ class Calendar{
     this.container.querySelector('header').innerHTML = `${months[this.date.getMonth()]} - ${this.date.getFullYear()}`
   }
 
+  bindEvents(){
+    this.buttons = {};
+
+    this.buttons.prev = document.createElement('button');
+    this.buttons.next = document.createElement('button');
+
+    this.buttons.prev.innerHTML = 'Anterior';
+    this.buttons.next.innerHTML = 'Siguiente';
+
+    this.container.querySelector('.body').appendChild(this.buttons.prev);
+    this.container.querySelector('.body').appendChild(this.buttons.next);
+
+    this.buttons.prev.addEventListener('click', () => this.prev())
+    this.buttons.next.addEventListener('click', () => this.next())
+  }
+
   calculateDates(){
     this.monthStart = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
     this.monthEnd = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 1);
 
     this.monthLength = Math.floor((this.monthEnd - this.monthStart) / (1000 * 60 * 60 * 24)); //se divide por los milisegundos de un día
 
+  }
+
+  next(){
+    let month = this.date.getMonth();
+
+    if(month == 11){
+      this.date = new Date(this.date.getFullYear() + 1, 0, 1)
+    }
+    else{
+      this.date = new Date(this.date.getFullYear(), month + 1 , 1)
+    }
+
+    this.updateTable();
+  }
+
+  prev(){
+    let month = this.date.getMonth();
+
+    if(month == 0){
+      this.date = new Date(this.date.getFullYear() - 1, 11, 1)
+    }
+    else{
+      this.date = new Date(this.date.getFullYear(), month - 1 , 1)
+    }
+
+    this.updateTable();
   }
 
   buildTable(){
@@ -88,6 +131,6 @@ class Calendar{
 
     this.container.classList.add('custom-calendar')
     this.container.appendChild(document.createElement('header'));
-    this.container.appendChild(table);
+    this.container.appendChild(body);
   }
 }

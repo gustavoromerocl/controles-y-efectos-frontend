@@ -5,6 +5,7 @@ class Calendar{
   constructor(options){
     this.date = options.date || new Date();
     this.container = options.container;
+    this.onSelect = options.onSelect;
 
     //To do buttons
 
@@ -33,15 +34,13 @@ class Calendar{
         if(day >= firstDayInWeek && (day - firstDayInWeek) < this.monthLength){
           td.innerHTML = day - firstDayInWeek + 1;
           td.style.borderStyle = 'solid';
+          td.dataset.day = day - firstDayInWeek + 1;
         }else{
           td.style.borderStyle = 'none';
           td.innerHTML = '';
-        }
-
-        
-          
+          td.removeAttribute('data-day');
+        }  
       }
-
       //table.appendChild(tr);
     }
 
@@ -98,6 +97,14 @@ class Calendar{
     this.updateTable();
   }
 
+  select(el){
+    //console.log(ev);
+    if(!el.dataset.day) return;
+    let date =  new Date(this.date.getFullYear(), this.date.getMonth(), el.dataset.day);
+    this.onSelect(date);
+    console.log(date);
+  }
+
   buildTable(){
     let table = document.createElement('table');
     let thead = document.createElement('thead');
@@ -112,7 +119,7 @@ class Calendar{
       let tr = document.createElement('tr');
       for (let j = 0; j < 7; j++){
         let td = document.createElement('td');
-        
+        td.addEventListener('click', (ev) => this.select(ev.currentTarget))
         tr.appendChild(td);
       }
 

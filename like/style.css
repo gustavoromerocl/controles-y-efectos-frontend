@@ -1,0 +1,36 @@
+body{
+  background: #eee;
+}
+
+.card{
+  background-color: white;
+  border-radius: 1rem;
+  width: 300px;
+  height: 400px;
+  box-shadow: 0px 2px 5px rgba(0,0,0,0.16), 0px 2px 10px rgba(0,0,0,0.12);
+}
+
+.heart{
+  animation: like 1s forwards;
+  animation-timing-function: cubic-bezier(0, 0.55, 0.45, 1);
+  top: 40%;
+}
+
+@keyframes like{
+  0%{
+    opacity: 0;
+    transform: scale(0);
+  }
+  40%{
+    opacity: 1;
+    transform: scale(1);
+  }
+  60%{
+    opacity: 1;
+    transform: scale(1);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(0);
+  }
+}

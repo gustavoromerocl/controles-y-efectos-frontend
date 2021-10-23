@@ -1,0 +1,20 @@
+.container{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-column-gap: 1rem;
+}
+
+.container:hover .option{
+  background-color: cyan;
+  filter: blur(2px);
+}
+
+.container .option{
+  transition: all 0.3s ease-in;
+}
+
+.container .option:hover{
+  filter: blur(0px);
+  transform: scale(1.05);
+}
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canvas</title>
+</head>
+<body>
+  <canvas id="canvas" width="600" height="600" style="border: solid 1px;"></canvas>
+
+  <script>
+    let ctx = document.getElementById('canvas').getContext('2d');
+
+    let image = new Image();
+
+    
+
+    image.onload = function(){
+      console.log(this);
+
+      let scale = this.height / this.width
+      let height = canvas.height / 2//scale
+
+      let y = (canvas.height / 2) - (height / 2);
+      ctx.fillStyle = 'white';
+      ctx.fillRect(0,0,canvas.width, canvas.height);
+      ctx.drawImage(this, 0,y, canvas.width, height); //imagen, coordenadas, ancho, alto
+    }
+
+    image.src = 'img-1.jpeg'
+  </script>
+</body>
+</html>

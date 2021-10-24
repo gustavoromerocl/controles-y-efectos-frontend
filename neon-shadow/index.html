@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>sombras con degradado</title>
+
+  <style>
+    html,body{
+      height: 100%;
+      width: 100%;
+    }
+    body{
+      background-color: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card{
+      background-color: white;
+      height: 100px;
+      width: 200px;
+      position: relative;
+    }
+    .card::after{
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      content: '';
+      background: #20002c;  /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #cbb4d4, #20002c);  /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #cbb4d4, #20002c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      width: 100%;
+      height: 100%;
+      filter: blur(10px);
+      z-index: -1;
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+    <div class="card"></div>
+</body>
+</html>

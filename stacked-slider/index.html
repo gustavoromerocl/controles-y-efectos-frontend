@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Slider</title>
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="slider">
+    <div class="element" style="background-image: url('./images/img-1.jpeg');"></div>
+    <div class="element" style="background-image: url('./images/img-2.jpeg');"></div>
+    <div class="element" style="background-image: url('./images/img-3.jpeg');"></div>
+  </div>
+  <script src="./main.js"></script>
+
+  <script>
+    let elements = document.querySelectorAll(".element")
+    let currentIndex = -1;
+    next();
+    
+    function next(){
+      currentIndex += 1;
+
+      if(currentIndex >= elements.length) currentIndex = 0;
+
+      let el = elements[currentIndex];
+
+      let activeElement = document.querySelector('element.active');
+
+      if(activeElement){
+        activeElement.classList.add('start-out');
+        setTimeout(moveActive,500, activeElement)
+      }
+
+      el.classList.add('active');
+      setTimeout(next, 3000)
+    }
+
+    function moveActive(activeElement){
+      activeElement.classList.remove('active');
+      activeElement.classList.remove('start-out');
+    }
+  </script>
+</body>
+</html>

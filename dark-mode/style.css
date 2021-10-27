@@ -16,6 +16,47 @@ body{
   background-color: var(--bg-color);
 }
 
+.dark-mode-controls{
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.dark-toggle{
+
+}
+
+.dark-toggle + label{ /*siblings selector -> escoje al selector hermano*/
+  --height-control: 1rem;
+  display: inline-block;
+  width: calc( var(--height-control) * 2);
+  height: var(--height-control);
+  background-color: var(--main-colors);
+  position: relative;
+  border-radius: calc(var(--radius) * 2);
+}
+
+.dark-toggle + label::after{
+  --circle-size: calc( var(--height-control) * 1.33);
+  position: absolute;
+  content: "";
+  left: calc((var(--circle-size) - var(--height-control)) * -1);
+  top:calc((var(--circle-size) - var(--height-control)) / 2 * -1);
+  width: var(--circle-size);
+  height: var(--circle-size);
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  transition: all 0.2s ease-in;
+}
+
+.dark-toggle:checked + label::after{
+  left: calc(100% - (var(--circle-size) - var(--height-control) / 2));
+}
+
+.dark-toggle:checked + label{ 
+  background-color: blue;
+}
+
 .container{
   width: 100%;
   height: 100vh;

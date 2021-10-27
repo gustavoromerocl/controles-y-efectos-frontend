@@ -1,11 +1,19 @@
-:root{
+
+:root{ /*Custom properties*/
   --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.5);
   --radius: 4px;
+  --bg-color: white;
+  --main-text-color: DarkSlateGray;
+  --accent-color: MediumBlue;
+  --secondary-text-color: GhostWhite;
+  --main-color: GhostWhite;
 }
 
 body{
   font-family: Georgia, 'Times New Roman', Times, serif;
   margin: 0;
+  color: var(--main-text-color);
+  background-color: var(--bg-color);
 }
 
 .container{
@@ -16,6 +24,7 @@ body{
 }
 
 .card{
+  background-color: var(--main-color);
   box-shadow: var(--shadow);
   border-radius: var(--radius);
   padding: 4rem 3rem;
@@ -44,4 +53,13 @@ body{
   box-shadow: 0 0 2px;
   padding: 0.2rem 0.rem;
   border-radius: var(--radius);
+}
+
+.card form [type="submit"]{
+  background-color: var(--accent-color);
+  color: var(--secondary-text-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.5em 1em;
+  border: 0;
 }

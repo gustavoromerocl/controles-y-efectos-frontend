@@ -63,3 +63,13 @@ body{
   padding: 0.5em 1em;
   border: 0;
 }
+
+@media(prefers-color-scheme: dark), (prefers-color-scheme: no-preference){
+  :root{
+    --bg-color: #0d1b1e;
+    --main-color: #0b3c49;
+    --accent-color: Purple;
+    --main-text-color: LightGoldenrodYellow;
+    --secondary-text-color: Lavender;
+  }
+}

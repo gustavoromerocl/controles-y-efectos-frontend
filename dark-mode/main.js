@@ -4,56 +4,70 @@
  3- Su dispositvo dark mode. usuario light mode
  4- Dispositivo: light mode. Usuario: No haya cambiado -> light mode
  5- Dispositivo: light mode. Usuario: dark mode -> dark mode
- */
+*/
+
+const colorSchemeLSKey = "mp--color--scheme";
  readSchemeFromLS();
  isUsingDarkMode();
+
+
+
+ console.log(colorSchemeLSKey);
  let checkBoxElement = document.querySelector(".dark-toggle");
+ 
  
  console.log(isUsingDarkMode());
  checkBoxElement.checked = isUsingDarkMode();
  
  checkBoxElement.addEventListener("change", function(){
-  let bodyElement = document.querySelector("body");
+
    if(this.checked){
      /**cambiar a dark mode */
-     bodyElement.classList.remove("force-light");
-     bodyElement.classList.add("force-dark");
-     setColorSchemeLS("dark");
+     changeToDarkMode();
+     
    }
    else{
      /**cambiar a light mode */
-     bodyElement.classList.remove("force-dark");
-     bodyElement.classList.add("force-light");
-     setColorSchemeLS("light");
+     changeToLightMode();
+     
    }
  });
 
- function setInitialValueForColorSheme(){
-
+ function changeToLightMode(){
+  let bodyElement = document.querySelector("body");
+  bodyElement.classList.remove("force-dark");
+  bodyElement.classList.add("force-light");
+  setColorSchemeLS("light");
+  
+ }
+ function changeToDarkMode(){
+  let bodyElement = document.querySelector("body");
+  bodyElement.classList.remove("force-light");
+  bodyElement.classList.add("force-dark");
+  setColorSchemeLS("dark");
  }
 
  function readSchemeFromLS(){
    let colorScheme = getColorSchemeLS();
-   let bodyElement = document.querySelector("body");
    if(!colorScheme) return
 
    if(colorScheme === "light"){
-     bodyElement.classList.add("force-light")
+    changeToLightMode();
    }else{
-    bodyElement.classList.add("force-dark")
+    changeToDarkMode();
    }
  }
 
  function setColorSchemeLS(value){
    try{
-    window.localStorage.setItem("mp--color--scheme", value)
+    window.localStorage.setItem(colorSchemeLSKey, value)
    }catch{
     console.log("Error en LS");
    }
  }
  function getColorSchemeLS(){
   try{
-    return window.localStorage.getItem("mp--color--scheme")
+    return window.localStorage.getItem(colorSchemeLSKey)
    }catch{
     console.log("Error en LS");
    }

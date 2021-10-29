@@ -106,11 +106,19 @@ body{
 }
 
 @media(prefers-color-scheme: dark), (prefers-color-scheme: no-preference){
-  :root{
+  body:not(.force-light){
     --bg-color: #0d1b1e;
     --main-color: #0b3c49;
     --accent-color: Purple;
     --main-text-color: LightGoldenrodYellow;
     --secondary-text-color: Lavender;
   }
+}
+
+body.force-dark{
+  --bg-color: #0d1b1e;
+  --main-color: #0b3c49;
+  --accent-color: Purple;
+  --main-text-color: LightGoldenrodYellow;
+  --secondary-text-color: Lavender;
 }
